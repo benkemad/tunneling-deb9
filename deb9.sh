@@ -124,11 +124,11 @@ service openvpn restart
 
 	cd
 # membuat config untuk client
- wget -O /var/www/html/myvpn-tcp-1194.ovpn "https://github.com/potatonc/server/raw/master/client/myvpn-tcp-1194.ovpn"
- wget -O /var/www/html/myvpn-tcp-9994.ovpn "https://github.com/potatonc/server/raw/master/client/myvpn-tcp-9994.ovpn"
- wget -O /var/www/html/myvpn-ssl-2905.ovpn "https://github.com/potatonc/server/raw/master/client/myvpn-ssl-2905.ovpn"
- wget -O /var/www/html/myvpn-ssl-9443.ovpn "https://github.com/potatonc/server/raw/master/client/myvpn-ssl-9443.ovpn"
- wget -O /var/www/html/myvpn-udp-25000.ovpn "https://github.com/potatonc/server/raw/master/client/myvpn-udp-25000.ovpn"
+ wget -O /var/www/html/myvpn-tcp-1194.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-tcp-1194.ovpn"
+ wget -O /var/www/html/myvpn-tcp-9994.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-tcp-9994.ovpn"
+ wget -O /var/www/html/myvpn-ssl-2905.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-ssl-2905.ovpn"
+ wget -O /var/www/html/myvpn-ssl-9443.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-ssl-9443.ovpn"
+ wget -O /var/www/html/myvpn-udp-25000.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-udp-25000.ovpn"
  
 sed -i $MYIP2 /var/www/html/myvpn-tcp-1194.ovpn
 sed -i $MYIP2 /var/www/html/myvpn-tcp-9994.ovpn
@@ -186,15 +186,15 @@ service openvpn restart
 
 #detail nama perusahaan
 country=ID
-state=Jakarta
-locality=DKIJakarta
-organization=ANC
-organizationalunit=iniapayaBot
-commonname=Potato
-email=aldiblues@gmail.com
+state=Indonesia
+locality=Bandung
+organization=xShinGroup
+organizationalunit=xShinPages
+commonname=xShin
+email=xshin3373@gmail.com
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "https://github.com/potatonc/server/raw/master/common/common-password"
+wget -O /etc/pam.d/common-password "https://github.com/xshin404/tunneling-deb9/blob/master/common/common-password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -278,8 +278,10 @@ apt-get -y install neofetch
 cd
 echo "clear" >> .profile
 echo "neofetch" >> .profile
-echo "echo =======☛ ☛ ☛ Modified by Potato" >> .profile
-echo "echo menu => untuk menampilkan daftar menu" >> .profile
+echo "" >> .profile
+echo "echo ============================" >> .profile
+echo "echo |   Install Script xShin   |" >> .profile
+echo "echo ----------------------------" >> .profile
 rm -rf neofetch
 # update repo
 apt-get -y update
@@ -287,19 +289,19 @@ apt-get -y update
 # install webserver
 cd
 rm /etc/nginx/sites-enabled/default
-wget -O /etc/nginx/sites-enabled/default "https://github.com/potatonc/server/raw/master/nginx/default"
+wget -O /etc/nginx/sites-enabled/default "https://github.com/xshin404/tunneling-deb9/blob/master/nginx/default"
 
 /etc/init.d/nginx restart
 systemctl restart nginx
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://github.com/potatonc/server/raw/master/badvpn/badvpn-udpgw"
+wget -O /usr/bin/badvpn-udpgw "https://github.com/xshin404/tunneling-deb9/blob/master/badvpn/badvpn-udpgw"
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 
 cd
-wget -O /usr/bin/badvpn-udpgw "https://github.com/potatonc/server/raw/master/badvpn/badvpn-udpgw"
+wget -O /usr/bin/badvpn-udpgw "https://github.com/xshin404/tunneling-deb9/blob/master/badvpn/badvpn-udpgw"
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
@@ -321,7 +323,7 @@ echo "/usr/sbin/nologin" >> /etc/shells
 # install squid
 cd
 apt-get -y install squid3
-wget -O /etc/squid/squid.conf "https://github.com/potatonc/server/raw/master/squid/squid.conf"
+wget -O /etc/squid/squid.conf "https://github.com/xshin404/tunneling-deb9/blob/master/squid/squid.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 service squid restart
@@ -412,25 +414,26 @@ cd
 apt-get install -y libxml-parser-perl
 
 # banner /etc/issue.net
-wget -O /etc/banner.com "https://github.com/potatonc/server/raw/master/banner/banner.com"
+wget -O /etc/issue.net "https://github.com/xshin404/tunneling-deb9/blob/master/banner/issue.net"
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/banner.com"@g' /etc/default/dropbear
 
 # download script
 cd /usr/bin
-wget -O menu "https://github.com/potatonc/server/raw/master/menu/menu.sh"
-wget -O usernew "https://github.com/potatonc/server/raw/master/menu/usernew.sh"
-wget -O trial "https://github.com/potatonc/server/raw/master/menu/trial.sh"
-wget -O member "https://github.com/potatonc/server/raw/master/menu/member.sh"
-wget -O delete "https://github.com/potatonc/server/raw/master/menu/delete.sh"
-wget -O cek "https://github.com/potatonc/server/raw/master/menu/cek.sh"
-wget -O restart "https://github.com/potatonc/server/raw/master/menu/restart.sh"
-wget -O speedtest "https://github.com/potatonc/server/raw/master/menu/speedtest"
-wget -O info "https://github.com/potatonc/server/raw/master/menu/info.sh"
-wget -O about "https://github.com/potatonc/server/raw/master/menu/about.sh"
-wget -O onkill "https://github.com/potatonc/server/raw/master/menu/onkill.sh"
-wget -O offkill "https://github.com/potatonc/server/raw/master/menu/offkill.sh"
-wget -O live "https://github.com/potatonc/server/raw/master/menu/live.sh"
+wget -O menu "https://github.com/xshin404/tunneling-deb9/blob/master/menu/menu.sh"
+wget -O usernew "https://github.com/xshin404/tunneling-deb9/blob/master/menu/usernew.sh"
+wget -O trial "https://github.com/xshin404/tunneling-deb9/blob/master/menu/trial.sh"
+wget -O member "https://github.com/xshin404/tunneling-deb9/blob/master/menu/member.sh"
+wget -O delete "https://github.com/xshin404/tunneling-deb9/blob/master/menu/delete.sh"
+wget -O cek "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cek.sh"
+wget -O restart "https://github.com/xshin404/tunneling-deb9/blob/master/menu/restart.sh"
+wget -O speedtest "https://github.com/xshin404/tunneling-deb9/blob/master/menu/speedtest"
+wget -O info "https://github.com/xshin404/tunneling-deb9/blob/master/menu/info.sh"
+wget -O about "https://github.com/xshin404/tunneling-deb9/blob/master/menu/about.sh"
+wget -O onkill "https://github.com/xshin404/tunneling-deb9/blob/master/menu/onkill.sh"
+wget -O offkill "https://github.com/xshin404/tunneling-deb9/blob/master/menu/offkill.sh"
+wget -O live "https://github.com/xshin404/tunneling-deb9/blob/master/menu/live.sh"
+wget -o perpanjang "https://github.com/xshin404/tunneling-deb9/blob/master/menu/perpanjang.sh"
 
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot

@@ -1,12 +1,6 @@
 # install nginx
 apt-get -y install nginx php-fpm php-cli
 
-# install openvpn
-# Modified by Potato
-# Script mentah dari KleKlai
-# Perbaikan komponen yang tidak berfungsi
-# ❝=====--------------------------------=====❞
-
 # Get the "public" interface from the default route
 NIC=$(ip -4 route ls | grep default | grep -Po '(?<=dev )(\S+)' | head -1)
   # initializing var
@@ -434,6 +428,11 @@ wget -O onkill "https://github.com/xshin404/tunneling-deb9/blob/master/menu/onki
 wget -O offkill "https://github.com/xshin404/tunneling-deb9/blob/master/menu/offkill.sh"
 wget -O live "https://github.com/xshin404/tunneling-deb9/blob/master/menu/live.sh"
 wget -o perpanjang "https://github.com/xshin404/tunneling-deb9/blob/master/menu/perpanjang.sh"
+wget -o cekmemory "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cekmemory.py"
+wget -o cekport "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cekport.sh"
+wget -o customport "https://github.com/xshin404/tunneling-deb9/blob/master/menu/customport.sh"
+wget -o limit "https://github.com/xshin404/tunneling-deb9/blob/master/menu/limit.sh"
+wget -o userlimit "https://github.com/xshin404/tunneling-deb9/blob/master/menu/userlimit.sh"
 
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
@@ -451,6 +450,12 @@ chmod +x about
 chmod +x onkill
 chmod +x offkill
 chmod +x live
+chmod +x perpanjang
+chmod +x cekmemory
+chmod +x cekport
+chmod +x customport
+chmod +x limit
+chmod +x userlimit
 
 # finishing
 cd
@@ -470,7 +475,7 @@ estartf ~/.bash_history && history -c
 echo "unset HISTFILE" >> /etc/profile
 
 cd
-rm -f /root/myvpn.sh
+rm -f /root/deb9.sh
 
 # finishing
 clear

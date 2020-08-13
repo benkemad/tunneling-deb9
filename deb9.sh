@@ -26,7 +26,6 @@ cp -r /usr/share/easy-rsa /etc/openvpn
 cd /etc/openvpn
 cd easy-rsa
 
-# wget -O /etc/openvpn/easy-rsa/vars "https://github.com/potatonc/server/raw/master/vars.example"
 
 cp openssl-1.0.0.cnf openssl.cnf
 source ./vars
@@ -273,9 +272,10 @@ cd
 echo "clear" >> .profile
 echo "neofetch" >> .profile
 echo "" >> .profile
-echo "echo ============================" >> .profile
-echo "echo |   Install Script xShin   |" >> .profile
-echo "echo ----------------------------" >> .profile
+echo "echo =======================" >> .profile
+echo "echo |   Tunneling Deb 9   |" >> .profile
+echo "echo | 	  By xShin       |" >> .profile
+echo "echo -----------------------" >> .profile
 rm -rf neofetch
 # update repo
 apt-get -y update
@@ -410,7 +410,7 @@ apt-get install -y libxml-parser-perl
 # banner /etc/issue.net
 wget -O /etc/issue.net "https://github.com/xshin404/tunneling-deb9/blob/master/banner/issue.net"
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
-sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/banner.com"@g' /etc/default/dropbear
+sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.com"@g' /etc/default/dropbear
 
 # download script
 cd /usr/bin
@@ -430,9 +430,6 @@ wget -O live "https://github.com/xshin404/tunneling-deb9/blob/master/menu/live.s
 wget -o perpanjang "https://github.com/xshin404/tunneling-deb9/blob/master/menu/perpanjang.sh"
 wget -o cekmemory "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cekmemory.py"
 wget -o cekport "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cekport.sh"
-wget -o customport "https://github.com/xshin404/tunneling-deb9/blob/master/menu/customport.sh"
-wget -o limit "https://github.com/xshin404/tunneling-deb9/blob/master/menu/limit.sh"
-wget -o userlimit "https://github.com/xshin404/tunneling-deb9/blob/master/menu/userlimit.sh"
 
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
@@ -453,9 +450,6 @@ chmod +x live
 chmod +x perpanjang
 chmod +x cekmemory
 chmod +x cekport
-chmod +x customport
-chmod +x limit
-chmod +x userlimit
 
 # finishing
 cd

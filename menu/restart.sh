@@ -50,7 +50,7 @@ echo -e "=================================="
 echo -e "|   RESTART PORT STUNNEL / SSL   |"
 echo -e "----------------------------------"
 /etc/init.d/stunnel4 restart
-        if /etc/ini.d/stunnel4 restart
+        if /etc/init.d/stunnel4 restart
                 then
                         echo "========================================="
                         echo "|   STUNNEL / SSL BERHASIL DI RESTART   |"

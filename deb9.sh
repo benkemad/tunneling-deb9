@@ -7,7 +7,7 @@ NIC=$(ip -4 route ls | grep default | grep -Po '(?<=dev )(\S+)' | head -1)
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- ipv4.icanhazip.com);
-MYIP2="s/aldiblues/$MYIP/g";
+MYIP2="s/xshin/$MYIP/g";
 
 # disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
@@ -115,14 +115,37 @@ verb 3' >/etc/openvpn/server-udp-25000.conf
 systemctl enable openvpn
 service openvpn restart
 
-	cd
+cd
+
+# Cloning Script
+git clone https://github.com/xshin404/tunneling-deb9
+
 # membuat config untuk client
- wget -O /var/www/html/myvpn-tcp-1194.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-tcp-1194.ovpn"
- wget -O /var/www/html/myvpn-tcp-9994.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-tcp-9994.ovpn"
- wget -O /var/www/html/myvpn-ssl-2905.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-ssl-2905.ovpn"
- wget -O /var/www/html/myvpn-ssl-9443.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-ssl-9443.ovpn"
- wget -O /var/www/html/myvpn-udp-25000.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-udp-25000.ovpn"
+# wget -O /var/www/html/myvpn-tcp-1194.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-tcp-1194.ovpn"
+# wget -O /var/www/html/myvpn-tcp-9994.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-tcp-9994.ovpn"
+# wget -O /var/www/html/myvpn-ssl-2905.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-ssl-2905.ovpn"
+# wget -O /var/www/html/myvpn-ssl-9443.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-ssl-9443.ovpn"
+# wget -O /var/www/html/myvpn-udp-25000.ovpn "https://github.com/xshin404/tunneling-deb9/blob/master/client/myvpn-udp-25000.ovpn"
  
+#sed -i $MYIP2 /var/www/html/myvpn-tcp-1194.ovpn
+#sed -i $MYIP2 /var/www/html/myvpn-tcp-9994.ovpn
+#sed -i $MYIP2 /var/www/html/myvpn-ssl-9443.ovpn
+#sed -i $MYIP2 /var/www/html/myvpn-ssl-2905.ovpn
+#sed -i $MYIP2 /var/www/html/myvpn-udp-25000.ovpn
+
+# Masuk File Repository
+cd tunneling-deb9/menu
+
+#Membuat Config OpenVPN Client
+cd client
+mv myvpn-tcp-1194.ovpn /var/www/html
+mv myvpn-tcp-9994.ovpn /var/www/html
+mv myvpn-ssl-2905.ovpn /var/www/html
+mv myvpn-ssl-9443.ovpn /var/www/html
+mv myvpn-udp-25000.ovpn /var/www/html
+
+cd
+
 sed -i $MYIP2 /var/www/html/myvpn-tcp-1194.ovpn
 sed -i $MYIP2 /var/www/html/myvpn-tcp-9994.ovpn
 sed -i $MYIP2 /var/www/html/myvpn-ssl-9443.ovpn
@@ -187,7 +210,12 @@ commonname=xShin
 email=xshin3373@gmail.com
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "https://github.com/xshin404/tunneling-deb9/blob/master/common/common-password"
+# wget -O /etc/pam.d/common-password "https://github.com/xshin404/tunneling-deb9/blob/master/common/common-password"
+# chmod +x /etc/pam.d/common-password
+
+# Commono Password
+cd /root/tunneling-deb9/common
+mv common /etc/pam.d/
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -283,22 +311,41 @@ apt-get -y update
 # install webserver
 cd
 rm /etc/nginx/sites-enabled/default
-wget -O /etc/nginx/sites-enabled/default "https://github.com/xshin404/tunneling-deb9/blob/master/nginx/default"
+#wget -O /etc/nginx/sites-enabled/default "https://github.com/xshin404/tunneling-deb9/blob/master/nginx/default"
+
+cd tunneling-deb9/nginx
+mv default /etc/nginx/sites-enabled/
+
+cd
 
 /etc/init.d/nginx restart
 systemctl restart nginx
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://github.com/xshin404/tunneling-deb9/blob/master/badvpn/badvpn-udpgw"
+#wget -O /usr/bin/badvpn-udpgw "https://github.com/xshin404/tunneling-deb9/blob/master/badvpn/badvpn-udpgw"
+
+cd tunneling-deb9/badvpn
+mv badvpn-udpgw /usr/bin/
+
+cd
+
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 
 cd
-wget -O /usr/bin/badvpn-udpgw "https://github.com/xshin404/tunneling-deb9/blob/master/badvpn/badvpn-udpgw"
+rm -rf tunneling-deb9
+git clone https://github.com/xshin404/tunneling-deb9
+#wget -O /usr/bin/badvpn-udpgw "https://github.com/xshin404/tunneling-deb9/blob/master/badvpn/badvpn-udpgw"
+
+cd tunneling-deb9/badvpn
+mv badvpn-udpgw /usr/bin/
+
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
+
+cd
 
 # setting port ssh
 sed -i 's/#Port 22/Port 22/g' /etc/ssh/sshd_config
@@ -317,7 +364,13 @@ echo "/usr/sbin/nologin" >> /etc/shells
 # install squid
 cd
 apt-get -y install squid3
-wget -O /etc/squid/squid.conf "https://github.com/xshin404/tunneling-deb9/blob/master/squid/squid.conf"
+#wget -O /etc/squid/squid.conf "https://github.com/xshin404/tunneling-deb9/blob/master/squid/squid.conf"
+
+cd tunneling-deb9/squid
+mv squid.conf /etc/squid
+
+cd
+
 sed -i $MYIP2 /etc/squid/squid.conf
 
 service squid restart
@@ -408,48 +461,91 @@ cd
 apt-get install -y libxml-parser-perl
 
 # banner /etc/issue.net
-wget -O /etc/issue.net "https://github.com/xshin404/tunneling-deb9/blob/master/banner/issue.net"
+#wget -O /etc/issue.net "https://github.com/xshin404/tunneling-deb9/blob/master/banner/issue.net"
+
+cd tunneling-deb9/banner
+mv issue.net /etc/
+
+cd
+
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.com"@g' /etc/default/dropbear
 
-# download script
-cd /usr/bin
-wget -O menu "https://github.com/xshin404/tunneling-deb9/blob/master/menu/menu.sh"
-wget -O usernew "https://github.com/xshin404/tunneling-deb9/blob/master/menu/usernew.sh"
-wget -O trial "https://github.com/xshin404/tunneling-deb9/blob/master/menu/trial.sh"
-wget -O member "https://github.com/xshin404/tunneling-deb9/blob/master/menu/member.sh"
-wget -O delete "https://github.com/xshin404/tunneling-deb9/blob/master/menu/delete.sh"
-wget -O cek "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cek.sh"
-wget -O restart "https://github.com/xshin404/tunneling-deb9/blob/master/menu/restart.sh"
-wget -O speedtest "https://github.com/xshin404/tunneling-deb9/blob/master/menu/speedtest"
-wget -O info "https://github.com/xshin404/tunneling-deb9/blob/master/menu/info.sh"
-wget -O about "https://github.com/xshin404/tunneling-deb9/blob/master/menu/about.sh"
-wget -O onkill "https://github.com/xshin404/tunneling-deb9/blob/master/menu/onkill.sh"
-wget -O offkill "https://github.com/xshin404/tunneling-deb9/blob/master/menu/offkill.sh"
-wget -O live "https://github.com/xshin404/tunneling-deb9/blob/master/menu/live.sh"
-wget -o perpanjang "https://github.com/xshin404/tunneling-deb9/blob/master/menu/perpanjang.sh"
-wget -o cekmemory "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cekmemory.py"
-wget -o cekport "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cekport.sh"
+# Menu
+cd
 
+# Cloning Script
+#git clone https://github.com/xshin404/tunneling-deb9
+
+# Masuk File Repository
+cd tunneling-deb9/menu
+
+# Hapus ekstensi file
+mv menu.sh menu
+mv usernew.sh usernew
+mv trial.sh trial
+mv delete.sh delete
+mv cek.sh cek
+mv restart.sh restart
+mv speedtest.py speedtest
+mv info.sh info
+mv about.sh about
+mv live.sh live
+mv cekmemory.py cekmemory
+mv cekport.sh cekport
+
+#wget -O menu "https://github.com/xshin404/tunneling-deb9/blob/master/menu/menu.sh"
+#wget -O usernew "https://github.com/xshin404/tunneling-deb9/blob/master/menu/usernew.sh"
+#wget -O trial "https://github.com/xshin404/tunneling-deb9/blob/master/menu/trial.sh"
+#wget -O member "https://github.com/xshin404/tunneling-deb9/blob/master/menu/member.sh"
+#wget -O delete "https://github.com/xshin404/tunneling-deb9/blob/master/menu/delete.sh"
+#wget -O cek "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cek.sh"
+#wget -O restart "https://github.com/xshin404/tunneling-deb9/blob/master/menu/restart.sh"
+#wget -O speedtest "https://github.com/xshin404/tunneling-deb9/blob/master/menu/speedtest"
+#wget -O info "https://github.com/xshin404/tunneling-deb9/blob/master/menu/info.sh"
+#wget -O about "https://github.com/xshin404/tunneling-deb9/blob/master/menu/about.sh"
+#wget -O live "https://github.com/xshin404/tunneling-deb9/blob/master/menu/live.sh"
+#wget -o perpanjang "https://github.com/xshin404/tunneling-deb9/blob/master/menu/perpanjang.sh"
+#wget -o cekmemory "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cekmemory.py"
+#wget -o cekport "https://github.com/xshin404/tunneling-deb9/blob/master/menu/cekport.sh"
+
+cd
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
-chmod +x menu
-chmod +x usernew
-chmod +x trial
-chmod +x member
-chmod +x delete
-chmod +x cek
-chmod +x restart
-chmod +x speedtest
-chmod +x info
-chmod +x about
-chmod +x onkill
-chmod +x offkill
-chmod +x live
-chmod +x perpanjang
-chmod +x cekmemory
-chmod +x cekport
+cd tunneling-deb9/menu
+
+# Copy File To /usr/bin
+cp -R menu /usr/bin
+cp -R usernew /usr/bin
+cp -R trial /usr/bin
+cp -R member /usr/bin
+cp -R delete /usr/bin
+cp -R cek /usr/bin
+cp -R restart /usr/bin
+cp -R speedtest /usr/bin
+cp -R info /usr/bin
+cp -R about /usr/bin
+cp -R live /usr/bin
+cp -R perpanjang /usr/bin
+cp -R cekmemory /usr/bin
+cp -R cekport /usr/bin
+
+# Change Mode Script
+chmod +x /usr/bin/menu
+chmod +x /usr/bin/usernew
+chmod +x /usr/bin/trial
+chmod +x /usr/bin/member
+chmod +x /usr/bin/delete
+chmod +x /usr/bin/cek
+chmod +x /usr/bin/restart
+chmod +x /usr/bin/speedtest
+chmod +x /usr/bin/info
+chmod +x /usr/bin/about
+chmod +x /usr/bin/live
+chmod +x /usr/bin/perpanjang
+chmod +x /usr/bin/cekmemory
+chmod +x /usr/bin/cekport
 
 # finishing
 cd

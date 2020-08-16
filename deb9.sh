@@ -19,6 +19,7 @@ sysctl -p
 # folder iptables
 mkdir -p /etc/iptables
 
+#Install OpenVPN Cut
 # install openvpn
 apt-get install -y openvpn easy-rsa iptables openssl ca-certificates gnupg
 apt-get install -y net-tools
@@ -33,8 +34,8 @@ source ./vars
 source vars
 rm -rf keys
 ./clean-all
-./buld-ca
-./buld-key-server server
+./build-ca
+./build-key-server server
 ./pkitool --initca
 ./pkitool --server server
 ./pkitool client
@@ -134,10 +135,9 @@ git clone https://github.com/xshin404/tunneling-deb9
 #sed -i $MYIP2 /var/www/html/myvpn-udp-25000.ovpn
 
 # Masuk File Repository
-cd tunneling-deb9/menu
+cd tunneling-deb9/client
 
 #Membuat Config OpenVPN Client
-cd client
 mv myvpn-tcp-1194.ovpn /var/www/html
 mv myvpn-tcp-9994.ovpn /var/www/html
 mv myvpn-ssl-2905.ovpn /var/www/html
@@ -160,34 +160,34 @@ cd /var/www/html
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-tcp-1194.ovpn
+} >> myvpn-tcp-1194.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-tcp-9994.ovpn
+} >> myvpn-tcp-9994.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-ssl-9443.ovpn
+} >> myvpn-ssl-9443.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-ssl-2905.ovpn
+} >> myvpn-ssl-2905.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-udp-25000.ovpn
+} >> myvpn-udp-25000.ovpn
 
 # zip config
-zip myvpn-config.zip myvpn-tcp-1194.ovpn myvpn-tcp-9994.ovpn myvpn-ssl-9443.ovpn myvpn-ssl-2905.ovpn myvpn-udp-25000.ovpn
+zip ovpn-config.zip myvpn-tcp-1194.ovpn myvpn-tcp-9994.ovpn myvpn-ssl-9443.ovpn myvpn-ssl-2905.ovpn myvpn-udp-25000.ovpn
 
 apt-get install -y iptables iptables-persistent netfilter-persistent
 
@@ -213,7 +213,7 @@ email=xshin3373@gmail.com
 # wget -O /etc/pam.d/common-password "https://github.com/xshin404/tunneling-deb9/blob/master/common/common-password"
 # chmod +x /etc/pam.d/common-password
 
-# Commono Password
+# Common Password
 cd /root/tunneling-deb9/common
 mv common /etc/pam.d/
 chmod +x /etc/pam.d/common-password
@@ -300,10 +300,11 @@ cd
 echo "clear" >> .profile
 echo "neofetch" >> .profile
 echo "" >> .profile
-echo "echo =======================" >> .profile
-echo "echo |   Tunneling Deb 9   |" >> .profile
-echo "echo | 	  By xShin       |" >> .profile
-echo "echo -----------------------" >> .profile
+echo "echo -e "=======================" " >> .profile
+echo "echo -e "|   Tunneling Deb 9   |" " >> .profile
+echo "echo -e "| 	  By xShin       |" " >> .profile
+echo "echo -e "-----------------------" " >> .profile
+echo "" >> .profile
 rm -rf neofetch
 # update repo
 apt-get -y update
@@ -313,7 +314,7 @@ cd
 rm /etc/nginx/sites-enabled/default
 #wget -O /etc/nginx/sites-enabled/default "https://github.com/xshin404/tunneling-deb9/blob/master/nginx/default"
 
-cd tunneling-deb9/nginx
+cd tunneling-deb9/nginx/
 mv default /etc/nginx/sites-enabled/
 
 cd
@@ -324,7 +325,7 @@ systemctl restart nginx
 cd
 #wget -O /usr/bin/badvpn-udpgw "https://github.com/xshin404/tunneling-deb9/blob/master/badvpn/badvpn-udpgw"
 
-cd tunneling-deb9/badvpn
+cd tunneling-deb9/badvpn/
 mv badvpn-udpgw /usr/bin/
 
 cd
@@ -338,7 +339,7 @@ rm -rf tunneling-deb9
 git clone https://github.com/xshin404/tunneling-deb9
 #wget -O /usr/bin/badvpn-udpgw "https://github.com/xshin404/tunneling-deb9/blob/master/badvpn/badvpn-udpgw"
 
-cd tunneling-deb9/badvpn
+cd tunneling-deb9/badvpn/
 mv badvpn-udpgw /usr/bin/
 
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500' /etc/rc.local

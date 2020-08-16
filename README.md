@@ -32,8 +32,8 @@
 
 ### ========================
 ### | NOTE UNTUK OPENVPN & SQUID |
-### ---------------------------------------
+### -----------------------------------------
 
-### Pada Config OpenVPN baris 4 "remote $port" isikan IP Address Server sebelum $port pada nginx
+- Config OpenVPN baris 4 "remote $port" isikan IP Address Server sebelum $port (Folder /var/www/html/)
 
-### Pada Squid Proxy Configuration "acl SSH dst youripaddress-youripaddress/255.255.255.255" Ganti youripaddress dengan IP Address Server
+- Squid Proxy Configuration baris 16 "acl SSH dst youripaddress-youripaddress/255.255.255.255" Ganti youripaddress dengan IP Address Server (Folder /etc/squid/)

@@ -1,4 +1,6 @@
-### Script Tunneling SSH dan OpenVPN untuk OS Debian 9
+### ==========================
+### | Script Version : v.1.0 |
+### --------------------------
 
 ### Fitur
 - Main Menu : Menampilkan Main Menu
@@ -27,5 +29,10 @@
 
 <br />
 
-### Script Version : v.1.0
+### ==============================
+### | NOTE UNTUK OPENVPN & SQUID |
+### ------------------------------
 
+### Pada Config OpenVPN baris 4 "remote $port" isikan IP Address Server sebelum $port pada nginx
+
+### Pada Squid Proxy Configuration "acl SSH dst youripaddress-youripaddress/255.255.255.255" Ganti youripaddress dengan IP Address Server

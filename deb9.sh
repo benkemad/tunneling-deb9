@@ -138,19 +138,13 @@ git clone https://github.com/xshin404/tunneling-deb9
 cd tunneling-deb9/client
 
 #Membuat Config OpenVPN Client
-mv myvpn-tcp-1194.ovpn /var/www/html
-mv myvpn-tcp-9994.ovpn /var/www/html
-mv myvpn-ssl-2905.ovpn /var/www/html
-mv myvpn-ssl-9443.ovpn /var/www/html
-mv myvpn-udp-25000.ovpn /var/www/html
+mv client-tcp-1194.ovpn /var/www/html
+mv client-tcp-9994.ovpn /var/www/html
+mv client-ssl-2905.ovpn /var/www/html
+mv client-ssl-9443.ovpn /var/www/html
+mv client-udp-25000.ovpn /var/www/html
 
 cd
-
-sed -i $MYIP2 /var/www/html/myvpn-tcp-1194.ovpn
-sed -i $MYIP2 /var/www/html/myvpn-tcp-9994.ovpn
-sed -i $MYIP2 /var/www/html/myvpn-ssl-9443.ovpn
-sed -i $MYIP2 /var/www/html/myvpn-ssl-2905.ovpn
-sed -i $MYIP2 /var/www/html/myvpn-udp-25000.ovpn
 
 apt-get install -y zip
 cd /var/www/html
@@ -160,34 +154,34 @@ cd /var/www/html
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-tcp-1194.ovpn
+} >>client-tcp-1194.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-tcp-9994.ovpn
+} >>client-tcp-9994.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-ssl-9443.ovpn
+} >>client-ssl-9443.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-ssl-2905.ovpn
+} >>client-ssl-2905.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >>myvpn-udp-25000.ovpn
+} >>client-udp-25000.ovpn
 
 # zip config
-zip myvpn-config.zip myvpn-tcp-1194.ovpn myvpn-tcp-9994.ovpn myvpn-ssl-9443.ovpn myvpn-ssl-2905.ovpn myvpn-udp-25000.ovpn
+zip client-config.zip client-tcp-1194.ovpn client-tcp-9994.ovpn client-ssl-9443.ovpn client-ssl-2905.ovpn client-udp-25000.ovpn
 
 apt-get install -y iptables iptables-persistent netfilter-persistent
 
@@ -297,9 +291,6 @@ make PREFIX=/boot/home/config/non-packaged install
 make -i install
 apt-get -y install neofetch
 cd
-echo "clear" >> .profile
-echo "neofetch" >> .profile
-echo "" >> .profile
 rm -rf neofetch
 # update repo
 apt-get -y update
@@ -559,13 +550,11 @@ service dropbear restart
 service squid restart
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
-estartf ~/.bash_history && history -c
-echo "unset HISTFILE" >> /etc/profile
 
 cd
 rm -f /root/deb9.sh
+rm -rf /root/tunneling-deb9
 
 # finishing
-clear
 neofetch
 netstat -tunlp

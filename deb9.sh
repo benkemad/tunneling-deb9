@@ -160,34 +160,34 @@ cd /var/www/html
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >> myvpn-tcp-1194.ovpn
+} >>myvpn-tcp-1194.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >> myvpn-tcp-9994.ovpn
+} >>myvpn-tcp-9994.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >> myvpn-ssl-9443.ovpn
+} >>myvpn-ssl-9443.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >> myvpn-ssl-2905.ovpn
+} >>myvpn-ssl-2905.ovpn
 
 {
 echo "<ca>"
 cat "/etc/openvpn/ca.crt"
 echo "</ca>"
-} >> myvpn-udp-25000.ovpn
+} >>myvpn-udp-25000.ovpn
 
 # zip config
-zip ovpn-config.zip myvpn-tcp-1194.ovpn myvpn-tcp-9994.ovpn myvpn-ssl-9443.ovpn myvpn-ssl-2905.ovpn myvpn-udp-25000.ovpn
+zip myvpn-config.zip myvpn-tcp-1194.ovpn myvpn-tcp-9994.ovpn myvpn-ssl-9443.ovpn myvpn-ssl-2905.ovpn myvpn-udp-25000.ovpn
 
 apt-get install -y iptables iptables-persistent netfilter-persistent
 
@@ -299,11 +299,6 @@ apt-get -y install neofetch
 cd
 echo "clear" >> .profile
 echo "neofetch" >> .profile
-echo "" >> .profile
-echo "echo -e "=======================" " >> .profile
-echo "echo -e "|   Tunneling Deb 9   |" " >> .profile
-echo "echo -e "| 	  By xShin       |" " >> .profile
-echo "echo -e "-----------------------" " >> .profile
 echo "" >> .profile
 rm -rf neofetch
 # update repo
@@ -470,7 +465,7 @@ mv issue.net /etc/
 cd
 
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
-sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.com"@g' /etc/default/dropbear
+sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 # Menu
 cd
@@ -485,6 +480,7 @@ cd tunneling-deb9/menu
 mv menu.sh menu
 mv usernew.sh usernew
 mv trial.sh trial
+mv member.sh member
 mv delete.sh delete
 mv cek.sh cek
 mv restart.sh restart
@@ -492,6 +488,7 @@ mv speedtest.py speedtest
 mv info.sh info
 mv about.sh about
 mv live.sh live
+mv perpanjang.sh perpanjang
 mv cekmemory.py cekmemory
 mv cekport.sh cekport
 

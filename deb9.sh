@@ -482,6 +482,7 @@ mv live.sh live
 mv perpanjang.sh perpanjang
 mv cekmemory.py cekmemory
 mv cekport.sh cekport
+mv success.sh success
 
 #wget -O menu "https://github.com/xshin404/tunneling-deb9/blob/master/menu/menu.sh"
 #wget -O usernew "https://github.com/xshin404/tunneling-deb9/blob/master/menu/usernew.sh"
@@ -519,6 +520,7 @@ cp -R live /usr/bin
 cp -R perpanjang /usr/bin
 cp -R cekmemory /usr/bin
 cp -R cekport /usr/bin
+cp -R success /usr/bin
 
 # Change Mode Script
 chmod +x /usr/bin/menu
@@ -535,6 +537,7 @@ chmod +x /usr/bin/live
 chmod +x /usr/bin/perpanjang
 chmod +x /usr/bin/cekmemory
 chmod +x /usr/bin/cekport
+chmod +x /usr/bin/success
 
 # finishing
 cd
@@ -556,5 +559,4 @@ rm -f /root/deb9.sh
 rm -rf /root/tunneling-deb9
 
 # finishing
-neofetch
-netstat -tunlp
+success

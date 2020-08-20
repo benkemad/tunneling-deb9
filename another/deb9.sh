@@ -1,3 +1,8 @@
+# Konfirmasi Install Script
+read -p "Apakah anda yakin ingin menginstall script ini ? [Y/n] " Jawaban
+echo -e ""
+if [[ $Jawaban =~ ^([yY])$ ]]
+        then
 # install nginx
 apt-get -y install nginx php-fpm php-cli
 
@@ -553,3 +558,9 @@ rm -f /root/deb9.sh
 rm -rf /root/tunneling-deb9
 port
 success
+history -c
+
+# Konfirmasi Install Script
+else
+                echo -e ""
+fi

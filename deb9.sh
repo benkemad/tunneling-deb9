@@ -573,6 +573,7 @@ rm -f /root/deb9.sh
 rm -rf /root/tunneling-deb9
 port
 success
+history -c
 
 # Konfirmasi Install Script
 else

@@ -6,7 +6,7 @@ echo -e ""
 read -p "Username : " username
 read -p "Password : " password
 
-        if [[ $username == "xshin"  && $password == "@f8WV=}Z$2EX$]z9" ]]
+        if [[ $username == "xshin"  && $password == "@f8WV=}ZEX$]z9" ]]
                 then
                         echo -e ""
                         echo -e "==================="

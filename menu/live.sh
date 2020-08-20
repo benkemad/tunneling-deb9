@@ -1,6 +1,5 @@
 #!/bin/bash
 # live
-clear
 echo -e ""
 echo -e "======================"
 echo -e "|   LIVE BANDWIDTH   |"

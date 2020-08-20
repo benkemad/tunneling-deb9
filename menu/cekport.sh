@@ -1,4 +1,3 @@
-clear
 echo -e ""
 echo -e "================"
 echo -e "|   Cek Port   |"

@@ -1,6 +1,5 @@
 #!/bin/bash
 #Menu Section
-clear
 echo -e ""
 echo -e "   ================="
 echo -e "   |   Main Menu   |"

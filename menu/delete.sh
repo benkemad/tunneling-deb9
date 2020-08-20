@@ -1,6 +1,5 @@
 #!/bin/bash
 #Script to remove SSH & OpenVPN users
-clear
 echo -e ""
 echo -e "================================"
 echo -e "|   HAPUS AKUN SSH & OpenVPN   |"
@@ -8,7 +7,7 @@ echo -e "--------------------------------"
 echo -e ""
 read -p "Masukkan Username yang akan di hapus : " Users
 echo -e ""
-read -p "Apakah anda yakin ingin menghapus $Users ? (Y/n) " Jawaban
+read -p "Apakah anda yakin ingin menghapus $Users ? [Y/n] " Jawaban
 echo -e ""
 if [[ $Jawaban =~ ^([yY])$ ]]
         then

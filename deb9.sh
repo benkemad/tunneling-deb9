@@ -1,3 +1,23 @@
+#Login Script
+echo -e "========="
+echo -e "| Login |"
+echo -e "---------"
+echo -e ""
+read -p "Username : " username
+read -p "Password : " password
+
+        if [[ $username == "xshin"  && $password == "@f8WV=}Z$2EX$]z9" ]]
+                then
+                        echo -e ""
+                        echo -e "==================="
+                        echo -e "| Success Login ! |"
+                        echo -e "-------------------"
+                        echo -e ""
+# Konfirmasi Install Script
+read -p "Apakah anda yakin ingin menginstall script ini ? [Y/n] " Jawaban
+echo -e ""
+if [[ $Jawaban =~ ^([yY])$ ]]
+        then
 # install nginx
 apt-get -y install nginx php-fpm php-cli
 
@@ -19,7 +39,6 @@ sysctl -p
 # folder iptables
 mkdir -p /etc/iptables
 
-#Install OpenVPN Cut
 # install openvpn
 apt-get install -y openvpn easy-rsa iptables openssl ca-certificates gnupg
 apt-get install -y net-tools
@@ -316,7 +335,7 @@ mv badvpn-udpgw /usr/bin/
 
 cd
 
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
+sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 
@@ -328,7 +347,7 @@ git clone https://github.com/xshin404/tunneling-deb9
 cd tunneling-deb9/badvpn/
 mv badvpn-udpgw /usr/bin/
 
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500' /etc/rc.local
+sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
 
@@ -343,7 +362,7 @@ service ssh restart
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 80 -p 236"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 80"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
@@ -387,10 +406,6 @@ socket = r:TCP_NODELAY=1
 [dropbear]
 accept = 443
 connect = 127.0.0.1:143
-
-[dropbear]
-accept = 943
-connect = 127.0.0.1:80
 
 [dropbear]
 accept = 9443
@@ -482,6 +497,7 @@ mv live.sh live
 mv perpanjang.sh perpanjang
 mv cekmemory.py cekmemory
 mv cekport.sh cekport
+mv port.sh port
 mv success.sh success
 
 #wget -O menu "https://github.com/xshin404/tunneling-deb9/blob/master/menu/menu.sh"
@@ -517,9 +533,9 @@ cp -R speedtest /usr/bin
 cp -R info /usr/bin
 cp -R about /usr/bin
 cp -R live /usr/bin
-cp -R perpanjang /usr/bin
 cp -R cekmemory /usr/bin
 cp -R cekport /usr/bin
+cp -R port /usr/bin
 cp -R success /usr/bin
 
 # Change Mode Script
@@ -534,9 +550,9 @@ chmod +x /usr/bin/speedtest
 chmod +x /usr/bin/info
 chmod +x /usr/bin/about
 chmod +x /usr/bin/live
-chmod +x /usr/bin/perpanjang
 chmod +x /usr/bin/cekmemory
 chmod +x /usr/bin/cekport
+chmod +x /usr/bin/port
 chmod +x /usr/bin/success
 
 # finishing
@@ -551,12 +567,25 @@ service dropbear restart
 /etc/init.d/webmin restart
 /etc/init.d/stunnel4 restart
 service squid restart
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
-
-cd
+screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 rm -f /root/deb9.sh
 rm -rf /root/tunneling-deb9
-
-# finishing
+port
 success
+
+# Konfirmasi Install Script
+else
+                echo -e ""
+fi
+#Login Script
+elif [ $username != "xshin" ]
+                then
+                        echo -e ""
+                        echo -e "Username Salah !"
+                        echo -e ""
+                else
+                        echo -e ""
+                        echo -e "Password Salah !"
+						echo -e ""
+                fi

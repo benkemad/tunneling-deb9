@@ -1,10 +1,7 @@
 #!/bin/bash
 # Script restart service dropbear, webmin, squid3, openvpn, openssh
-clear
 echo -e ""
-echo -e "============================="
-echo -e "|   RESTART PORT DROPBEAR   |"
-echo -e "-----------------------------"
+echo -e "RESTART PORT DROPBEAR . . ."
 service dropbear restart
         if service dropbear restart
                 then
@@ -17,9 +14,7 @@ service dropbear restart
                         echo "---------------------------------"
         fi
 echo ""
-echo -e "======================="
-echo -e "|   RESTART OPENVPN   |"
-echo -e "-----------------------"
+echo -e "RESTART PORT OPENVPN . . ."
 service openvpn restart
         if service openvpn restart
                 then
@@ -32,9 +27,7 @@ service openvpn restart
                         echo "--------------------------------"
          fi
 echo ""
-echo -e "============================"
-echo -e "|   RESTART PORT OPENSSH   |"
-echo -e "----------------------------"
+echo -e "RESTART PORT OPENSSH . . ."
 service ssh restart
         if service ssh restart
                 then
@@ -46,9 +39,7 @@ service ssh restart
                         echo "|   OPENSSH GAGAL DI RESTART   |"
                         echo "--------------------------------"
         fi
-echo -e "=================================="
-echo -e "|   RESTART PORT STUNNEL / SSL   |"
-echo -e "----------------------------------"
+echo -e "RESTART PORT STUNNEL / SSL . . ."
 /etc/init.d/stunnel4 restart
         if /etc/init.d/stunnel4 restart
                 then

@@ -71,4 +71,4 @@ chmod +x deb9.sh && ./deb9.sh
 * info
 * about
 
-### Not Support for x86
+### Not Support for kernel x86

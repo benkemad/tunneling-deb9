@@ -18,7 +18,7 @@ apt-get install git
 ```
 git clone https://github.com/xshin404/tunneling-deb9
 ```
-**Open Folder 'tunneling-deb9' & Move deb9.sh to root**
+**Open Folder "tunneling-deb9" & move deb9.sh to root**
 ```
 cd tunneling-deb9 && mv deb9.sh /root or ..
 ```
@@ -44,7 +44,7 @@ chmod +x deb9.sh && ./deb9.sh
 * Badvpn - Udpgw        : 7300 & 7200
 
 ### Web Server
-* Nginx http(s)://[ip]:81/
+* Nginx http(s)://$IP:81/
 
 ### cPanel Server with Webmin
 * Webmin http(s)://$IP:10000/

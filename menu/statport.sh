@@ -1,7 +1,7 @@
 echo -e ""
-echo -e "================"
-echo -e "|   Cek Port   |"
-echo -e "----------------"
+echo -e "==================="
+echo -e "|   Status Port   |"
+echo -e "-------------------"
 echo -e ""
 echo -e "List :"
 echo -e ""
@@ -22,7 +22,7 @@ read -p "Mana yang ingin anda pilih : " Jawaban
                         echo -e "|   Dropbear   |"
                         echo -e "----------------"
                         echo -e ""
-                        netstat -tunlp | grep dropbear
+                        service dropbear status
                         echo -e ""
                 else
                         echo
@@ -37,7 +37,7 @@ read -p "Mana yang ingin anda pilih : " Jawaban
                         echo -e "|   OpenSSH   |"
                         echo -e "---------------"
                         echo -e ""
-                        netstat -tunlp | grep openssh
+                        service ssh status
                         echo -e ""
                 else
                         echo
@@ -52,7 +52,7 @@ read -p "Mana yang ingin anda pilih : " Jawaban
                         echo -e "|   Stunnel   |"
                         echo -e "---------------"
                         echo -e ""
-                        netstat -tunlp | grep stunnel4
+                        /etc/init.d/stunnel4 status
                         echo -e ""
                 else
                         echo
@@ -67,13 +67,13 @@ read -p "Mana yang ingin anda pilih : " Jawaban
                         echo -e "|   OpenVPN   |"
                         echo -e "---------------"
                         echo -e ""
-                        netstat -tunlp | grep openvpn
+                        service openvpn status
                         echo -e ""
                 else
                         echo
         fi
 
-        #Squid Proxy
+        #SquidProxy
         if [[ $Jawaban =~ ^([5])$ ]]
                 then
                         clear
@@ -82,7 +82,7 @@ read -p "Mana yang ingin anda pilih : " Jawaban
                         echo -e "|   Squid Proxy   |"
                         echo -e "-------------------"
                         echo -e ""
-                        netstat -tunlp | grep squid
+                        service squid status
                         echo -e ""
                 else
                         echo
@@ -97,7 +97,7 @@ read -p "Mana yang ingin anda pilih : " Jawaban
                         echo -e "|   Nginx   |"
                         echo -e "-------------"
                         echo -e ""
-                        netstat -tunlp | grep nginx
+                        service nginx status
                         echo -e ""
                 else
                         echo

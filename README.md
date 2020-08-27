@@ -1,39 +1,74 @@
-### ===============
-### | Script Version : V.1.1 |
-### -------------------------
+# Script Auto Install
 
-### Fitur
-- Main Menu : Menampilkan Main Menu
-- Usernew   : Membuat akun SSH & OpenVPN baru
-- Trial     : Membuat akun SSH & OpenVPN percobaan
-- Delete    : Menghapus akun SSH & OpenVPN
-- Cek       : Mengecek akun SSH yang aktif / login
-- member    : Menampilkan semua akun SSH & OpenVPN
-- Live      : Cek Bandwidth Server
-- Restart   : Restart Port OpenSSH, OpenVPN, Squid Proxy, Dropbear & Stunnel
-- Reboot    : Reboot Server
-- Speedtest : Speedtest Server
-- Cekmemory : Menampilkan sisa RAM
-- Cekport   : Cek Port OpenSSH, OpenVPN, Squid Proxy, Dropbear & Stunnel
-- Info      : Menampilkan spesifikasi Server
-- About     : Info mengenai Script ini
+## Version 1.2
 
-### Languages and Tools:
+### OS
+* Debian 9
 
-<img align="left" alt="Python" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png" />
-<img align="left" alt="Terminal" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png" />
-<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
-<img align="left" alt="Git" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png" />
-<img align="left" alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
-<img align="left" alt="Visual Studio Code" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />
+### Install
+**For Update & Upgrade Binary**
+```
+apt-update && apt-upgrade
+```
+**Download / Install Git**
+```
+apt-get install git
+```
+**Cloning This Repo**
+```
+git clone https://github.com/xshin404/tunneling-deb9
+```
+**Open Folder 'tunneling-deb9' & Move deb9.sh to root**
+```
+cd tunneling-deb9 && mv deb9.sh /root or ..
+```
+**Execute Script**
+```
+chmod +x deb9.sh && ./deb9.sh
+```
 
-<br />
-<br />
+### What's New Version ?
+* Fixing Bug On Squid Proxy
+* Fixing Bug On OpenVPN
+* Add New Fitur : statport & update
+* Update README.md on Github Repo With Minimalist
 
-### ========================
-### | NOTE UNTUK OPENVPN & SQUID |
-### -----------------------------------------
+### About Port
+* OpenSSH               : 22 & 444
+* Dropbear              : 143 & 80
+* Stunnel / SSL         : 443
+* Squid Proxy           : 8000, 8989 & 8080
+* OpenVPN TCP           : 1194
+* OpenVPN UDP           : 25000
+* OpenVPN Stunnel / SSL : 2905 & 9443
+* Badvpn - Udpgw        : 7300 & 7200
 
-- Config OpenVPN baris 4 "remote $port" isikan IP Address Server sebelum $port (Folder /var/www/html/)
+### Web Server
+* Nginx http(s)://[ip]:81/
 
-- Squid Proxy Configuration baris 16 "acl SSH dst youripaddress-youripaddress/255.255.255.255" Ganti youripaddress dengan IP Address Server (Folder /etc/squid/)
+### cPanel Server with Webmin
+* Webmin http(s)://$IP:10000/
+
+### Time Server
+* Timezone : Asia/Jakarta
+
+### Fitur Script
+* menu
+* usernew
+* trial
+* delete
+* cek
+* member
+* live
+* restart
+* reboot
+* speedtest
+* cekmemory
+* cekport
+* statport
+* update
+* contact
+* info
+* about
+
+### Not Support for x86

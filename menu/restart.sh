@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script restart service dropbear, webmin, squid3, openvpn, openssh
+# Script restart service dropbear, squid3, openvpn, openssh
 echo -e ""
 echo -e "RESTART PORT DROPBEAR . . ."
 service dropbear restart
@@ -50,6 +50,17 @@ echo -e "RESTART PORT STUNNEL / SSL . . ."
                         echo "======================================"
                         echo "|   STUNNEL / SSL GAGAL DI RESTART   |"
                         echo "--------------------------------------"
+        fi
+service squid restart
+        if service squid restart
+                then
+                        echo "======================================="
+                        echo "|   SQUID PROXY BERHASIL DI RESTART   |"
+                        echo "---------------------------------------"
+                else
+                        echo "===================================="
+                        echo "|   SQUID PROXY GAGAL DI RESTART   |"
+                        echo "------------------------------------"
         fi
 netstat -tunlp
 echo -e ""

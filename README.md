@@ -1,5 +1,5 @@
 ##Script Version 1.3
-![GitHub Logo](/images/v13.png)
+![Image](/image/v13.png)
 
 ### OS
 * Debian 9

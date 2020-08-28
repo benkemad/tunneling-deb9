@@ -1,3 +1,6 @@
+#!/bin/bash
+#Cek Port
+clear
 echo -e ""
 echo -e "================"
 echo -e "|   Cek Port   |"
@@ -37,7 +40,7 @@ read -p "Mana yang ingin anda pilih : " Jawaban
                         echo -e "|   OpenSSH   |"
                         echo -e "---------------"
                         echo -e ""
-                        netstat -tunlp | grep openssh
+                        netstat -tunlp | grep ssh
                         echo -e ""
                 else
                         echo

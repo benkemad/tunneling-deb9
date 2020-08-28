@@ -1,3 +1,5 @@
+#!/bin/bash
+#Contact Me
 echo -e "   ======================"
 echo -e "   |   Contact Author   |"
 echo -e "   ----------------------"

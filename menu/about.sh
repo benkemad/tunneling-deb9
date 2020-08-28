@@ -2,23 +2,31 @@
 #About this script
 clear
 echo -e ""
-echo -e "================="
-echo -e "|   Created By  |"
-echo -e "-----------------"
-echo -e "- xShin"
+echo -e "================" | lolcat
+echo -e "|   Coding By  |" | lolcat
+echo -e "----------------" | lolcat
+echo -e "- xShin" | lolcat
 echo -e ""
-echo -e "================="
-echo -e "|   Thanks To   |"
-echo -e "-----------------"
-echo -e "- Stuckoverflow"
-echo -e "- Github"
-echo -e "- Klekai"
-echo -e "- Angristan"
-echo -e "- Potatonc"
-echo -e "- etc"
-echo -e "- And u"
+echo -e "=================" | lolcat
+echo -e "|   Thanks To   |" | lolcat
+echo -e "-----------------" | lolcat
+echo -e "- Stuckoverflow" | lolcat
+echo -e "- Github" | lolcat
+echo -e "- Klekai" | lolcat
+echo -e "- Angristan" | lolcat
+echo -e "- Potatonc" | lolcat
+echo -e "- etc" | lolcat
+echo -e "- And u" | lolcat
 echo -e ""
-echo -e "=============================="
-echo -e "|   Script Version : V.1.2   |"
-echo -e "------------------------------"
+echo -e "====================" | lolcat
+echo -e "| Donate to Author |" | lolcat
+echo -e "--------------------" | lolcat
+echo -e ""
+echo -e "DANA    : +62 896 3736 9606 ( Arman Dwi Pangestu )" | lolcat
+echo -e "LinkAja : +62 896 3736 9606 ( Arman Dwi Pangestu )" | lolcat
+echo -e "OVO     : +62 896 3736 9606 ( Arman Dwi Pangestu )" | lolcat
+echo -e ""
+echo -e "===========================" | lolcat
+echo -e "| ---! Version V.1.3 !--- |" | lolcat
+echo -e "===========================" | lolcat
 echo -e ""

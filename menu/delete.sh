@@ -1,13 +1,14 @@
 #!/bin/bash
-#Script to remove SSH & OpenVPN users
+#Delete Account
+clear
 echo -e ""
-echo -e "================================"
-echo -e "|   HAPUS AKUN SSH & OpenVPN   |"
-echo -e "--------------------------------"
+echo -e "======================"
+echo -e "|   Delete Account   |"
+echo -e "----------------------"
 echo -e ""
-read -p "Masukkan Username yang akan di hapus : " Users
+read -p "Username : " Users
 echo -e ""
-read -p "Apakah anda yakin ingin menghapus $Users ? [Y/n] " Jawaban
+read -p "Are you sure you want to delete $Users ? [Y/n] " Jawaban
 echo -e ""
 if [[ $Jawaban =~ ^([yY])$ ]]
         then
@@ -15,15 +16,15 @@ if [[ $Jawaban =~ ^([yY])$ ]]
                         then
                                 userdel $Users
                                 echo -e "========================================================="
-                                echo -e "|   Success Username ( $Users ) berhasil di hapus.   |"
+                                echo -e "|   Username ($Users) has been successfully deleted.   |"
                                 echo -e "---------------------------------------------------------"
                                 echo -e ""
                         else
-                                echo -e "======================================================"
-                                echo -e "|   Failed Username ( $Users ) tidak ditemukan.   |"
-                                echo -e "------------------------------------------------------"
+                                echo -e "======================================"
+                                echo -e "|   Username ( $Users ) not found.   |"
+                                echo -e "--------------------------------------"
                                 echo -e
-                                echo -e "Silahkan cek Username dengan perintah 'member'."
+                                echo -e "Please check Username with the 'member' command."
                                 echo -e ""
                 fi
         else

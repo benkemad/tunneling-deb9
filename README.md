@@ -1,6 +1,6 @@
 # Script Auto Install
 
-## Version 1.2
+## Version 1.3
 
 ### OS
 * Debian 9
@@ -28,10 +28,14 @@ chmod +x deb9.sh && ./deb9.sh
 ```
 
 ### What's New Version ?
-* Fixing Bug On Squid Proxy
-* Fixing Bug On OpenVPN
-* Add New Fitur : statport & update
-* Update README.md on Github Repo With Minimalist
+* Fixed Bug On Squid Proxy
+* Fixed Bug On OpenVPN
+* Add New Fitur : contact, statport & update
+* Update README.md on Repository to Minimalist
+* Added Lolcat
+* Added Confirm Before Create Account
+* Added Config OpenVPN Instagram
+* Open Reporting or Issues
 
 ### About Port
 * OpenSSH               : 22 & 444
@@ -70,5 +74,3 @@ chmod +x deb9.sh && ./deb9.sh
 * contact
 * info
 * about
-
-### Not Support for kernel x86

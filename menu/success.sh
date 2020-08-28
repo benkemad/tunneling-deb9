@@ -1,19 +1,19 @@
 #!/bin/bash
 #Success Output
 echo -e ""
-echo -e "   TERIMA KASIH TELAH MENGGUNAKAN SCRIPT INI, UNTUK DONASI BISA KE"
+echo -e "Thanks for Using This Script !" | lolcat
 echo -e ""
-echo -e "   ======================================================"
-echo -e "   |                                                    |"
-echo -e "   | DANA    = +62 896 3736 9606 ( Arman Dwi Pangestu ) |"
-echo -e "   | LinkAja = +62 896 3736 9606 ( Arman Dwi Pangestu ) |"
-echo -e "   | OVO     = +62 896 3736 9606 ( Arman Dwi Pangestu ) |"
-echo -e "   |                                                    |"
-echo -e "   ======================================================"
+echo -e "====================" | lolcat
+echo -e "| Donate to Author |" | lolcat
+echo -e "--------------------" | lolcat
 echo -e ""
-echo -e "   ATAU CHAT KONTAK AUTHOR DENGAN MENGETIKKAN 'contact' "
+echo -e "DANA    : +62 896 3736 9606 ( Arman Dwi Pangestu )" | lolcat
+echo -e "LinkAja : +62 896 3736 9606 ( Arman Dwi Pangestu )" | lolcat
+echo -e "OVO     : +62 896 3736 9606 ( Arman Dwi Pangestu )" | lolcat
 echo -e ""
-echo -e "   ==========================="
-echo -e "   | ---! Version V.1.2 !--- |"
-echo -e "   ==========================="
+echo -e "Or chat contact author on Telegram : t.me/xShin_404" | lolcat
+echo -e ""
+echo -e "===========================" | lolcat
+echo -e "| ---! Version V.1.3 !--- |" | lolcat
+echo -e "===========================" | lolcat
 echo -e ""
